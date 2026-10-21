@@ -38,7 +38,6 @@ One script per group: the assembly is composed inside one model body.
 | `mars_rover_concept/mars_rover_concept.py` | `STEP/mars_rover_concept/mars_rover_concept.step` | Mars rover concept on terrain, mated + animated |
 | `mechanical_iris_aperture/mechanical_iris_aperture.py` | `STEP/mechanical_iris_aperture/mechanical_iris_aperture.step` | Labeled mechanical iris aperture assembly |
 | `miniature_spiral_staircase/miniature_spiral_staircase.py` | `STEP/miniature_spiral_staircase/miniature_spiral_staircase.step + STL/miniature_spiral_staircase/miniature_spiral_staircase_highres.stl, 3MF/miniature_spiral_staircase/miniature_spiral_staircase_highres.3mf, GLB/miniature_spiral_staircase/miniature_spiral_staircase_highres.glb` | Labeled miniature spiral staircase STEP compound |
-| `paper_roll_unwinder/paper_roll_unwinder.py` | `STEP/paper_roll_unwinder/paper_roll_unwinder.step + GLB/paper_roll_unwinder/paper_roll_unwinder.glb` | Shaft-type paper roll unwinder (mill roll stand): base frame, uprights, 1200 mm roll on an air shaft with disc brake and gearmotor, guide rollers and a dancer loop; `roll_spin`/`dancer_swing` mates, three poses and an `unwind` clip |
 | `motorcycle_fidgets/motorcycle_helmet_fidget.py` | `STEP/motorcycle_fidgets/motorcycle_helmet_fidget.step` | Motorcycle helmet fidget with a Cherry MX switch socket; the group shares `lib/mx_switch_socket.py` |
 | `motorcycle_fidgets/motorcycle_seat_fidget.py` | `STEP/motorcycle_fidgets/motorcycle_seat_fidget.step` | Motorcycle pillion (backseat) fidget with a Cherry MX switch socket; the group shares `lib/mx_switch_socket.py` |
 | `motorcycle_fidgets/motorcycle_shock_fidget.py` | `STEP/motorcycle_fidgets/motorcycle_shock_fidget.step` | Motorcycle shock absorber fidget with a Cherry MX switch socket; the group shares `lib/mx_switch_socket.py` |
@@ -67,6 +66,10 @@ builds the stale children in parallel and links their results.
 | `link_robot/link_robot.py` | `STEP/link_robot/link_robot.step` | Three-level link tree used by the store tests: a base, two placements of `link_arm`, one of `link_pin` |
 | `link_robot/link_arm.py` | `STEP/link_robot/link_arm.step` | A bar plus two placements of the pin model |
 | `link_robot/link_pin.py` | `STEP/link_robot/link_pin.step` | The leaf: a plain cylinder |
+| `paper_roll_unwinder/paper_roll_unwinder.py` | `STEP/paper_roll_unwinder/paper_roll_unwinder.step + GLB/paper_roll_unwinder/paper_roll_unwinder.glb` | Shaft-type paper roll unwinder (mill roll stand), welded from the plate below: base frame, uprights, 1200 mm roll on an air shaft with disc brake and gearmotor, guide rollers and a dancer loop; `roll_spin`/`dancer_swing` mates, three poses and an `unwind` clip |
+| `paper_roll_unwinder/upright_plate.py` | `STEP/paper_roll_unwinder/upright_plate.step` | The unwinder's 40 mm side plate alone, in its fabrication frame; the assembly fuses `plate_solid()` into each upright |
+| `paper_roll_unwinder/upright_plate_flat.py` | `DXF/paper_roll_unwinder/upright_plate_flat.dxf` | Its 1:1 cut profile (`@dxf`): outline, R110 head and the ⌀80 bore on `CUT` |
+| `paper_roll_unwinder/upright_plate_drawing.py` | `PDF/paper_roll_unwinder/upright_plate_drawing.pdf` | Its engineering drawing (`@eng_drawing`): three views, measured dimensions, hole callout, notes and title block on A2 at 1:5. Run the plate model first |
 
 `planetary_gear_stage/lib/gear_teeth.py` is that group's own copy of the two
 gear-profile helpers it needs; the parts in `models/examples` keep theirs in

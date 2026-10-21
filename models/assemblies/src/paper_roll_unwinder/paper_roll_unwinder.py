@@ -32,6 +32,8 @@ import cadgen
 from cadgen import build123d as bd
 from cadgen import glb, step
 
+from upright_plate import HEAD_R, plate_solid
+
 DISPLAY_NAME = "Paper roll unwinder"
 
 # ---------------------------------------------------------------------------
@@ -63,12 +65,11 @@ BEAM_YS = (-640.0, 600.0, 1840.0)
 BEAM_SECTION = 120.0
 FRAME_TOP_Z = FOOT_H + RAIL_H            # 150
 
-# Uprights
+# Uprights (the plate's own dimensions live in upright_plate.py)
 UPRIGHT_T = 40.0
 UPRIGHT_BASE_HALF = 450.0
-UPRIGHT_TOP_HALF = 110.0
 FOOTPLATE_T = 20.0
-HOUSING_R = 110.0
+HOUSING_R = HEAD_R          # the plate's head and the housing share one radius
 HOUSING_L = 100.0
 BORE_R = 40.0
 
@@ -198,13 +199,9 @@ def _feet():
 def _upright(sx: int):
     x = sx * RAIL_X
     plate_z0 = FRAME_TOP_Z + FOOTPLATE_T
-    profile = _yz_face([
-        (-UPRIGHT_BASE_HALF, plate_z0),
-        (UPRIGHT_BASE_HALF, plate_z0),
-        (UPRIGHT_TOP_HALF, AXIS_Z),
-        (-UPRIGHT_TOP_HALF, AXIS_Z),
-    ])
-    plate = _extrude_x(profile, x - UPRIGHT_T / 2, x + UPRIGHT_T / 2)
+    # The side plate is its own part (upright_plate.py, with its DXF and PDF
+    # drawings); here it is turned into the machine frame and welded up.
+    plate = bd.Pos(x, 0, plate_z0) * bd.Rotation(0, 0, 90) * plate_solid()
     footplate = _box(x, 0, FRAME_TOP_Z + FOOTPLATE_T / 2, 160.0, 2 * UPRIGHT_BASE_HALF + 100.0, FOOTPLATE_T)
     housing = _x_cylinder(x, 0, AXIS_Z, HOUSING_R, HOUSING_L)
     body = plate + footplate + housing
