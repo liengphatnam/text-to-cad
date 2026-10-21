@@ -17,9 +17,10 @@ Unchanged models are no-ops. A group is self-contained: its scripts import
 siblings and its own `lib/` with no path setup (python puts the script's
 directory on `sys.path`), and nothing imports across groups.
 
-Two models carry kinematics and choreography: `planetary_gear_assembly`
-(mates + a `drive` coupling + `quarter_cycle`/`half_cycle` poses) and
-`mars_rover_concept` (27 mates, 7 couplings, 4 poses). Their `.anim.js` clips
+Three models carry kinematics and choreography: `planetary_gear_assembly`
+(mates + a `drive` coupling + `quarter_cycle`/`half_cycle` poses),
+`mars_rover_concept` (27 mates, 7 couplings, 4 poses) and `paper_roll_unwinder`
+(5 revolute mates, 3 poses, an `unwind` clip). Their `.anim.js` clips
 sit beside the scripts and are copied into the artifact sidecar at build.
 `miniature_spiral_staircase` declares a `_highres` mesh variant at
 `mesh_tolerance=4e-4` to exercise the tolerance path.
@@ -37,6 +38,7 @@ One script per group: the assembly is composed inside one model body.
 | `mars_rover_concept/mars_rover_concept.py` | `STEP/mars_rover_concept/mars_rover_concept.step` | Mars rover concept on terrain, mated + animated |
 | `mechanical_iris_aperture/mechanical_iris_aperture.py` | `STEP/mechanical_iris_aperture/mechanical_iris_aperture.step` | Labeled mechanical iris aperture assembly |
 | `miniature_spiral_staircase/miniature_spiral_staircase.py` | `STEP/miniature_spiral_staircase/miniature_spiral_staircase.step + STL/miniature_spiral_staircase/miniature_spiral_staircase_highres.stl, 3MF/miniature_spiral_staircase/miniature_spiral_staircase_highres.3mf, GLB/miniature_spiral_staircase/miniature_spiral_staircase_highres.glb` | Labeled miniature spiral staircase STEP compound |
+| `paper_roll_unwinder/paper_roll_unwinder.py` | `STEP/paper_roll_unwinder/paper_roll_unwinder.step + GLB/paper_roll_unwinder/paper_roll_unwinder.glb` | Shaft-type paper roll unwinder (mill roll stand): base frame, uprights, 1200 mm roll on an air shaft with disc brake and gearmotor, guide rollers and a dancer loop; `roll_spin`/`dancer_swing` mates, three poses and an `unwind` clip |
 | `motorcycle_fidgets/motorcycle_helmet_fidget.py` | `STEP/motorcycle_fidgets/motorcycle_helmet_fidget.step` | Motorcycle helmet fidget with a Cherry MX switch socket; the group shares `lib/mx_switch_socket.py` |
 | `motorcycle_fidgets/motorcycle_seat_fidget.py` | `STEP/motorcycle_fidgets/motorcycle_seat_fidget.step` | Motorcycle pillion (backseat) fidget with a Cherry MX switch socket; the group shares `lib/mx_switch_socket.py` |
 | `motorcycle_fidgets/motorcycle_shock_fidget.py` | `STEP/motorcycle_fidgets/motorcycle_shock_fidget.step` | Motorcycle shock absorber fidget with a Cherry MX switch socket; the group shares `lib/mx_switch_socket.py` |
